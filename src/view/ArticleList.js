@@ -1,7 +1,7 @@
 
 import axios from "axios";
 import { Button, Card, Text, Title } from 'react-native-paper';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FlatList } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
@@ -19,31 +19,28 @@ export default function ArticleList() {
             .catch(function (error) {
                 console.log(error);
             });
-    }, []);
+    }, [APIData]);
 
-    const donnes = APIData.data;
 
-    console.log(donnes);
 
     const setData = (item) => {
         var path = `http://192.168.1.102:8000/api/article/delete/`;
         var id = item.articlesId;
         var createLink = path + id;
 
-        console.log(createLink);
 
         axios.delete(createLink).then(res => {
-            const newArticleList = item.filter(item => item.articlesId !== id);
+
+            const newArticleList = APIData.data.filter(item => item.articlesId !== id);
             setAPIData(newArticleList);
+            console.log(newArticleList);
         });
     }
-
-
 
     const renderItem = ({ item }) => (
 
 
-        <Card style={{ marginTop: '10%' }}>
+        <Card style={{ marginVertical: '10%' }}>
             <Card.Title title={item.title} subtitle={item.date} />
             <Card.Content style={{ marginBottom: 25 }}>
                 <Text numberOfLines={4}>{item.content}</Text>

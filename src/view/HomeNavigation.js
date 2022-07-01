@@ -29,7 +29,7 @@ export default HomeNavigation = () => {
                     </Button>
 
                     <Button onPress={() => navigation.navigate('ArticleMenu')} style={{ marginTop: '5%', width: '45%', height: 150, alignSelf: 'center', justifyContent: 'center', backgroundColor: '#cb5656', borderRadius: 15}} mode="contained">
-                        <Icon name="file" style={{ color: 'black' }} size={80} color="#900" />
+                        <Icon name="newspaper" style={{ color: 'black' }} size={80} color="#900" />
                     </Button>
 
                 </View>
